@@ -23,6 +23,7 @@ class OperatorTest {
         assertThat(operator.isMinus()).isTrue();
         assertThat(operator.isMultiple()).isFalse();
         assertThat(operator.isDivide()).isFalse();
+
     }
 
     @Test
