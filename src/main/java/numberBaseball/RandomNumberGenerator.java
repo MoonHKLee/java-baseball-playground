@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomNumberGenerator {
     private static final int BOUND = 10;
-    private static boolean[] usedNumberCheckingArray = new boolean[BOUND];
+    private static final boolean[] usedNumberCheckingArray = new boolean[BOUND];
     private static final Random random = new Random();
 
     private RandomNumberGenerator() {
