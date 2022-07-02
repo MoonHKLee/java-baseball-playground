@@ -9,7 +9,8 @@ class GameTest {
 
     @Test
     void check() {
-        Game game = new Game("123");
+        IOFactory factory = new IOFactory();
+        Game game = new Game("123", factory);
 
         String actual1 = game.check("123");
         String actual2 = game.check("312");
