@@ -8,15 +8,27 @@ import java.io.OutputStreamWriter;
 
 public class Main {
 
+    static final int START = 1;
+    static final int END = 2;
     public static void main(String[] args) throws IOException {
         IOFactory factory = new IOFactory();
-        Game game = new Game(RandomNumberGenerator.generate());
+        int gameStatus = START;
+        while(gameStatus==START) {
+            gameStatus = getGameStatus(factory);
+        }
+
+
+    }
+
+    private static int getGameStatus(IOFactory factory) throws IOException {
+        int gameStatus;
+        Game game = new Game(RandomNumberGenerator.generate(), factory);
         while(!game.isEnd()) {
             factory.showInputMessage();
             game.check(factory.getInput());
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
+        factory.showSuccessMessage();
+        gameStatus = Integer.parseInt(factory.getInput());
+        return gameStatus;
     }
 }
