@@ -24,4 +24,30 @@ public class IOFactory {
     public String getInput() throws IOException {
         return br.readLine();
     }
+
+    public void showSuccessMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public String print(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            return "낫싱";
+        }
+        return (ballPrint(ball) + " " + strikePrint(strike)).trim();
+    }
+
+    private String ballPrint(int ball) {
+        if (ball == 0) {
+            return "";
+        }
+        return ball + "볼";
+    }
+
+    private String strikePrint(int strike) {
+        if (strike == 0) {
+            return "";
+        }
+        return strike + "스트라이크";
+    }
 }

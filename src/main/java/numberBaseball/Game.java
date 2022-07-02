@@ -6,15 +6,19 @@ public class Game {
     private int strike;
     private int ball;
     private boolean isEnd;
+    private final IOFactory ioFactory;
 
-    public Game(String number) {
+    public Game(String number,IOFactory ioFactory) {
         this.numbers = number;
         this.strike = 0;
         this.ball = 0;
         this.isEnd = false;
+        this.ioFactory = ioFactory;
     }
 
     public String check(String inputNumber) {
+        ball = 0;
+        strike = 0;
         for (int i = 0; i < numbers.length(); i++) {
             String number = String.valueOf(inputNumber.charAt(i));
             existedCheck(inputNumber, number);
@@ -22,7 +26,7 @@ public class Game {
         if (strike == 3) {
             isEnd = true;
         }
-        return print(ball, strike);
+        return ioFactory.print(ball, strike);
     }
 
     private void existedCheck(String inputNumber, String number) {
@@ -43,26 +47,6 @@ public class Game {
         return numbers.indexOf(number) == inputNumber.indexOf(number);
     }
 
-    private String print(int ball, int strike) {
-        if (ball == 0 && strike == 0) {
-            return "낫싱";
-        }
-        return (ballPrint(ball) + " " + strikePrint(strike)).trim();
-    }
-
-    private String ballPrint(int ball) {
-        if (ball == 0) {
-            return "";
-        }
-        return ball + "볼";
-    }
-
-    private String strikePrint(int strike) {
-        if (strike == 0) {
-            return "";
-        }
-        return strike + "스트라이크";
-    }
 
     public boolean isEnd() {
         return isEnd;
